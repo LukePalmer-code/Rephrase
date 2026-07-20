@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --color-rp-peach-50: #FFF9F6;
+  --color-rp-peach-100: #FCEADF;
+  --color-rp-peach-200: #F6D5C3;
+  --color-rp-peach-300: #EDBFA9;
+
+  --color-rp-cream-50: #FFFCF9;
+  --color-rp-cream-100: #FFF8F2;
+  --color-rp-cream-200: #F8EFE7;
+
+  --color-rp-cocoa-500: #8A6252;
+  --color-rp-cocoa-700: #684131;
+  --color-rp-cocoa-800: #572F20;
+  --color-rp-cocoa-900: #452317;
+
+  --color-rp-blush-100: #FBE1DA;
+  --color-rp-blush-200: #F5C8BC;
+  --color-rp-blush-300: #EDAFA3;
+
+  --color-rp-sage-100: #EEF0E4;
+  --color-rp-sage-200: #D8DDC8;
+  --color-rp-sage-300: #BBC5A5;
+  --color-rp-sage-600: #7B8868;
+
+  --color-rp-butter-100: #FFF2D7;
+  --color-rp-butter-200: #F7DDA7;
+  --color-rp-butter-300: #EBC77F;
+
+  --color-rp-line: #E8C8B7;
+  --color-rp-line-strong: #CFA993;
+
+  --font-rp-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-rp-body: "Libre Baskerville", Georgia, "Times New Roman", serif;
+
+  --radius-rp-sm: 0.875rem;
+  --radius-rp-md: 1.375rem;
+  --radius-rp-lg: 1.875rem;
+
+  --shadow-rp-card:
+    0 1px 0 rgba(255,255,255,.72) inset,
+    0 14px 34px rgba(87,47,32,.10);
+  --shadow-rp-phone: 0 40px 90px rgba(69,35,23,.24);
+
+  --breakpoint-xs: 30rem;
+}
+
+@layer base {
+  html {
+    background: var(--color-rp-peach-200);
+    color: var(--color-rp-cocoa-900);
+  }
+
+  body {
+    min-width: 320px;
+    background:
+      radial-gradient(circle at 75% 20%, rgba(255,255,255,.22), transparent 35%),
+      var(--color-rp-peach-200);
+    font-family: var(--font-rp-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}

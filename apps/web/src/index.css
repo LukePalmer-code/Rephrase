@@ -1,0 +1,33 @@
+@import "./styles/tailwind-theme.css";
+
+@layer base {
+  * {
+    border-color: var(--color-rp-line);
+  }
+
+  ::selection {
+    background: var(--color-rp-blush-200);
+    color: var(--color-rp-cocoa-900);
+  }
+
+  :focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--color-rp-sage-600) 55%, transparent);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+#root {
+  min-height: 100vh;
+}
+

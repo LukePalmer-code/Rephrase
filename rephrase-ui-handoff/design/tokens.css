@@ -1,0 +1,112 @@
+:root {
+  color-scheme: light;
+
+  --rp-bg: #F6D5C3;
+  --rp-bg-soft: #FCEADF;
+  --rp-surface: #FFF8F2;
+  --rp-surface-elevated: #FFFCF9;
+
+  --rp-text: #452317;
+  --rp-text-soft: #684131;
+  --rp-text-muted: #8A6252;
+
+  --rp-primary: #572F20;
+  --rp-primary-hover: #452317;
+  --rp-primary-foreground: #FFF8F2;
+
+  --rp-blush: #F5C8BC;
+  --rp-blush-soft: #FBE1DA;
+  --rp-sage: #D8DDC8;
+  --rp-sage-strong: #7B8868;
+  --rp-butter: #F7DDA7;
+
+  --rp-border: #E8C8B7;
+  --rp-border-strong: #CFA993;
+
+  --rp-font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --rp-font-body: "Libre Baskerville", Georgia, "Times New Roman", serif;
+
+  --rp-radius-sm: 14px;
+  --rp-radius-md: 22px;
+  --rp-radius-lg: 30px;
+  --rp-radius-pill: 999px;
+
+  --rp-shadow-card:
+    0 1px 0 rgba(255, 255, 255, 0.72) inset,
+    0 14px 34px rgba(87, 47, 32, 0.10);
+  --rp-shadow-phone:
+    0 40px 90px rgba(69, 35, 23, 0.24);
+
+  --rp-content-max: 1180px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--rp-bg);
+  color: var(--rp-text);
+  font-family: var(--rp-font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.rp-display {
+  font-family: var(--rp-font-display);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+}
+
+.rp-card {
+  background: color-mix(in srgb, var(--rp-surface) 95%, white 5%);
+  border: 1px solid var(--rp-border);
+  border-radius: var(--rp-radius-lg);
+  box-shadow: var(--rp-shadow-card);
+}
+
+.rp-button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 3.5rem;
+  padding: 0 1.5rem;
+  border: 1px solid rgba(69, 35, 23, 0.12);
+  border-radius: var(--rp-radius-pill);
+  background: var(--rp-primary);
+  color: var(--rp-primary-foreground);
+  font-family: var(--rp-font-display);
+  font-size: 1.25rem;
+  box-shadow: 0 14px 28px rgba(87, 47, 32, 0.18);
+  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.rp-button-primary:hover {
+  background: var(--rp-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 18px 34px rgba(87, 47, 32, 0.22);
+}
+
+.rp-button-primary:focus-visible,
+.rp-icon-button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--rp-sage-strong) 50%, transparent);
+  outline-offset: 3px;
+}
+
+.rp-icon-button {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--rp-border-strong);
+  border-radius: 999px;
+  background: rgba(255, 248, 242, 0.62);
+  color: var(--rp-text);
+}
+
+.rp-pastel-blush { background: var(--rp-blush-soft); }
+.rp-pastel-sage { background: var(--rp-sage); }
+.rp-pastel-butter { background: var(--rp-butter); }
