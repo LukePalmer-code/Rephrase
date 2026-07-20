@@ -34,7 +34,10 @@ function App() {
         <Route path="recall" element={<RecallPage />} />
         <Route path="islands" element={<IslandsPage />} />
         <Route path="me" element={<MePage />} />
-        <Route path="settings" element={<SettingsPage basePath="/demo" />} />
+        <Route
+          path="settings"
+          element={<SettingsPage basePath="/demo" account={{ name: "Alex Rivera", email: "alex@example.com" }} />}
+        />
       </Route>
 
       {/* Real app — same shell, empty and ready to be wired up to the real backend. */}

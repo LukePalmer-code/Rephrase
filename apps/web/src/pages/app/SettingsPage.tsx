@@ -12,6 +12,10 @@ import { ChevronRightIcon, FlameIcon, LogoutIcon, TargetIcon, UserIcon } from ".
 
 type SettingsPageProps = {
   basePath: string;
+  account?: {
+    name: string;
+    email: string;
+  };
 };
 
 function SettingsRow({ icon, label, value }: { icon: ReactNode; label: string; value: string }) {
@@ -26,7 +30,7 @@ function SettingsRow({ icon, label, value }: { icon: ReactNode; label: string; v
   );
 }
 
-export function SettingsPage({ basePath }: SettingsPageProps) {
+export function SettingsPage({ basePath, account }: SettingsPageProps) {
   const [remindersOn, setRemindersOn] = useState(true);
 
   return (
@@ -56,8 +60,8 @@ export function SettingsPage({ basePath }: SettingsPageProps) {
           Account
         </p>
         <CreamCard className="mt-3">
-          <SettingsRow icon={<UserIcon size={18} aria-hidden />} label="Name" value="Alex Rivera" />
-          <SettingsRow icon={<UserIcon size={18} aria-hidden />} label="Email" value="alex@example.com" />
+          <SettingsRow icon={<UserIcon size={18} aria-hidden />} label="Name" value={account?.name ?? "Not set"} />
+          <SettingsRow icon={<UserIcon size={18} aria-hidden />} label="Email" value={account?.email ?? "Not set"} />
         </CreamCard>
 
         <p className="mt-6 font-rp-body text-xs font-bold uppercase tracking-[0.2em] text-rp-cocoa-600">
