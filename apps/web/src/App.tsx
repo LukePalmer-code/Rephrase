@@ -9,6 +9,7 @@ import { MePage } from "./pages/app/MePage";
 import { NarratePage } from "./pages/app/NarratePage";
 import { RecallPage } from "./pages/app/RecallPage";
 import { RecallSessionPage } from "./pages/app/RecallSessionPage";
+import { SettingsPage } from "./pages/app/SettingsPage";
 import { PortfolioPage } from "./pages/PortfolioPage";
 import {
   DocumentCheckIcon,
@@ -33,6 +34,7 @@ function App() {
         <Route path="recall" element={<RecallPage />} />
         <Route path="islands" element={<IslandsPage />} />
         <Route path="me" element={<MePage />} />
+        <Route path="settings" element={<SettingsPage basePath="/demo" />} />
       </Route>
 
       {/* Real app — same shell, empty and ready to be wired up to the real backend. */}
@@ -108,6 +110,7 @@ function App() {
             />
           }
         />
+        <Route path="settings" element={<SettingsPage basePath="/app" />} />
       </Route>
     </Routes>
   );

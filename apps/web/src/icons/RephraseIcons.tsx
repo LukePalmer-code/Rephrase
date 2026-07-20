@@ -495,6 +495,48 @@ export function FlowerBadgeIcon({ size = 24, title, ...props }: RephraseIconProp
   );
 }
 
+export function SettingsIcon({ size = 24, title, ...props }: RephraseIconProps) {
+  return (
+    <svg
+      {...baseProps}
+      width={size}
+      height={size}
+      role={title ? "img" : undefined}
+      aria-hidden={title ? undefined : true}
+      aria-label={title}
+      {...props}
+    >
+      <path d="M4 7h9"/>
+  <circle cx="16.5" cy="7" r="2"/>
+  <path d="M19 7h1"/>
+  <path d="M4 12h1"/>
+  <circle cx="8.5" cy="12" r="2"/>
+  <path d="M11.5 12h8.5"/>
+  <path d="M4 17h9"/>
+  <circle cx="16.5" cy="17" r="2"/>
+  <path d="M19 17h1"/>
+    </svg>
+  );
+}
+
+export function LogoutIcon({ size = 24, title, ...props }: RephraseIconProps) {
+  return (
+    <svg
+      {...baseProps}
+      width={size}
+      height={size}
+      role={title ? "img" : undefined}
+      aria-hidden={title ? undefined : true}
+      aria-label={title}
+      {...props}
+    >
+      <path d="M9 4H6.5A2.5 2.5 0 0 0 4 6.5v11A2.5 2.5 0 0 0 6.5 20H9"/>
+  <path d="m14 8 4 4-4 4"/>
+  <path d="M18 12H9"/>
+    </svg>
+  );
+}
+
 export function BotanicalSprigIcon({ size = 160, title, ...props }: RephraseIconProps) {
   return (
     <svg
