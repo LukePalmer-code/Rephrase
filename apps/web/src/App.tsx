@@ -1,4 +1,6 @@
 import { Route, Routes } from "react-router-dom";
+import { RequireAuth } from "./components/RequireAuth";
+import { AuthProvider } from "./context/AuthContext";
 import { AppEmptyState } from "./pages/app/AppEmptyState";
 import { AppLayout } from "./pages/app/AppLayout";
 import { HomePage } from "./pages/app/HomePage";
@@ -10,6 +12,8 @@ import { NarratePage } from "./pages/app/NarratePage";
 import { RecallPage } from "./pages/app/RecallPage";
 import { RecallSessionPage } from "./pages/app/RecallSessionPage";
 import { SettingsPage } from "./pages/app/SettingsPage";
+import { LoginPage } from "./pages/auth/LoginPage";
+import { SignupPage } from "./pages/auth/SignupPage";
 import { PortfolioPage } from "./pages/PortfolioPage";
 import {
   DocumentCheckIcon,
@@ -21,8 +25,11 @@ import {
 
 function App() {
   return (
-    <Routes>
+    <AuthProvider>
+      <Routes>
       <Route path="/" element={<PortfolioPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignupPage />} />
 
       {/* Demo — the fully populated showcase experience linked from the portfolio site. */}
       <Route path="/demo/listen/session/:playlistId" element={<ListenSessionPage />} />
@@ -41,7 +48,14 @@ function App() {
       </Route>
 
       {/* Real app — same shell, empty and ready to be wired up to the real backend. */}
-      <Route path="/app" element={<AppLayout basePath="/app" />}>
+      <Route
+        path="/app"
+        element={
+          <RequireAuth>
+            <AppLayout basePath="/app" />
+          </RequireAuth>
+        }
+      >
         <Route
           index
           element={
@@ -115,7 +129,8 @@ function App() {
         />
         <Route path="settings" element={<SettingsPage basePath="/app" />} />
       </Route>
-    </Routes>
+      </Routes>
+    </AuthProvider>
   );
 }
 

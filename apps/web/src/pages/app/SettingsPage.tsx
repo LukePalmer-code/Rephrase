@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppStatusBar } from "../../components/AppStatusBar";
 import { CreamCard } from "../../components/CreamCard";
 import { EditorialHeading } from "../../components/EditorialHeading";
@@ -7,6 +7,7 @@ import { PageShell } from "../../components/PageShell";
 import { PastelIconBadge } from "../../components/PastelIconBadge";
 import { PrimaryButton } from "../../components/PrimaryButton";
 import { SectionDivider } from "../../components/SectionDivider";
+import { useAuth } from "../../context/AuthContext";
 import { TARGET_LANGUAGE_LABEL } from "../../data/content";
 import { ChevronRightIcon, FlameIcon, LogoutIcon, TargetIcon, UserIcon } from "../../icons/RephraseIcons";
 
@@ -32,6 +33,18 @@ function SettingsRow({ icon, label, value }: { icon: ReactNode; label: string; v
 
 export function SettingsPage({ basePath, account }: SettingsPageProps) {
   const [remindersOn, setRemindersOn] = useState(true);
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
+
+  // `account` is passed explicitly for the hardcoded /demo showcase. In the
+  // real /app, there's no prop — we derive it from the signed-in Cognito user.
+  const displayAccount =
+    account ?? (user ? { name: user.email.split("@")[0], email: user.email } : undefined);
+
+  function handleLogout() {
+    signOut();
+    navigate("/login", { replace: true });
+  }
 
   return (
     <div>
@@ -60,8 +73,8 @@ export function SettingsPage({ basePath, account }: SettingsPageProps) {
           Account
         </p>
         <CreamCard className="mt-3">
-          <SettingsRow icon={<UserIcon size={18} aria-hidden />} label="Name" value={account?.name ?? "Not set"} />
-          <SettingsRow icon={<UserIcon size={18} aria-hidden />} label="Email" value={account?.email ?? "Not set"} />
+          <SettingsRow icon={<UserIcon size={18} aria-hidden />} label="Name" value={displayAccount?.name ?? "Not set"} />
+          <SettingsRow icon={<UserIcon size={18} aria-hidden />} label="Email" value={displayAccount?.email ?? "Not set"} />
         </CreamCard>
 
         <p className="mt-6 font-rp-body text-xs font-bold uppercase tracking-[0.2em] text-rp-cocoa-600">
@@ -96,7 +109,12 @@ export function SettingsPage({ basePath, account }: SettingsPageProps) {
           </button>
         </CreamCard>
 
-        <PrimaryButton to="/" variant="outline" icon={<LogoutIcon size={18} aria-hidden />} className="mt-10 w-full">
+        <PrimaryButton
+          {...(account ? { to: "/" } : { onClick: handleLogout })}
+          variant="outline"
+          icon={<LogoutIcon size={18} aria-hidden />}
+          className="mt-10 w-full"
+        >
           Log Out
         </PrimaryButton>
       </PageShell>

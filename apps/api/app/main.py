@@ -1,10 +1,21 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from mangum import Mangum
 
 from app.core.config import settings
 from app.routers import me
 
 app = FastAPI(title="Rephrase API")
+
+app.add_middleware(
+    CORSMiddleware,
+    # Vite's default dev server origin. Update/expand this once the frontend
+    # has a real deployed URL.
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(me.router)
 
