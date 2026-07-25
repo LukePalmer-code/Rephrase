@@ -33,6 +33,10 @@ class User(Base):
 
     id: Mapped[str] = mapped_column(String, primary_key=True)
     email: Mapped[str] = mapped_column(String, unique=True, index=True)
+    display_name: Mapped[str | None] = mapped_column(String, default=None)
+    # BCP-47-ish code for the language the user is learning, e.g. "fr-FR".
+    # Matches content.ts's TARGET_LANGUAGE_CODE, now per-user instead of hardcoded.
+    target_language: Mapped[str] = mapped_column(String, default="fr-FR")
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())
 
 
