@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from mangum import Mangum
 
 from app.core.config import settings
-from app.routers import islands, me, reviews, sentences, stats
+from app.routers import islands, me, narrate, reviews, sentences, stats
 
 app = FastAPI(title="Rephrase API")
 
@@ -22,6 +22,7 @@ app.include_router(islands.router)
 app.include_router(sentences.router)
 app.include_router(reviews.router)
 app.include_router(stats.router)
+app.include_router(narrate.router)
 
 
 @app.get("/health")

@@ -17,5 +17,11 @@ class Settings(BaseSettings):
     cognito_app_client_id: str = ""
     cognito_region: str = "eu-west-2"
 
+    openai_api_key: str = ""
+    # Cheap models by default (student-budget friendly per the cost management plan).
+    openai_chat_model: str = "gpt-4o-mini"
+    openai_embedding_model: str = "text-embedding-3-small"
+    openai_whisper_model: str = "whisper-1"
+
 
 settings = Settings()
