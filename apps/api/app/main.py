@@ -2,8 +2,11 @@ from fastapi import FastAPI
 from mangum import Mangum
 
 from app.core.config import settings
+from app.routers import me
 
 app = FastAPI(title="Rephrase API")
+
+app.include_router(me.router)
 
 
 @app.get("/health")
